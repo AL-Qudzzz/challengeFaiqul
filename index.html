@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Omise Tamboon React</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="grid grid-cols-2 gap-4">
+      <!-- Card 1 -->
+      <div
+        class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-[500px] h-[300px] flex flex-col items-start"
+      >
+        <img
+          src="./img/habitat-for-humanity-thailand.jpg"
+          alt="Donation"
+          class="rounded-t-lg w-full h-[230px] object-cover"
+        />
+        <div class="p-3 w-full flex justify-between items-center">
+          <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+          <button
+            onclick="openPayment()"
+            class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg"
+          >
+            Donate
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div
+        class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-[500px] h-[300px] flex flex-col items-start"
+      >
+        <img
+          src="./img/habitat-for-humanity-thailand.jpg"
+          alt="Donation"
+          class="rounded-t-lg w-full h-[230px] object-cover"
+        />
+        <div class="p-3 w-full flex justify-between items-center">
+          <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+          <button
+            onclick="openPayment()"
+            class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg"
+          >
+            Donate
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div
+        class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-[500px] h-[300px] flex flex-col items-start"
+      >
+        <img
+          src="./img/habitat-for-humanity-thailand.jpg"
+          alt="Donation"
+          class="rounded-t-lg w-full h-[230px] object-cover"
+        />
+        <div class="p-3 w-full flex justify-between items-center">
+          <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+          <button
+            onclick="openPayment()"
+            class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg"
+          >
+            Donate
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div
+        class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-[500px] h-[300px] flex flex-col items-start"
+      >
+        <img
+          src="./img/habitat-for-humanity-thailand.jpg"
+          alt="Donation"
+          class="rounded-t-lg w-full h-[230px] object-cover"
+        />
+        <div class="p-3 w-full flex justify-between items-center">
+          <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+          <button
+            onclick="openPayment()"
+            class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg"
+          >
+            Donate
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Payment -->
+    <div
+      id="payment"
+      class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg w-80">
+        <h2 class="text-lg font-semibold">Select the amount to donate (USD)</h2>
+        <div class="mt-4 space-y-2">
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="10"
+              class="form-radio"
+              checked
+            /><span>$10</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="20"
+              class="form-radio"
+            /><span>$20</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="50"
+              class="form-radio"
+            /><span>$50</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="100"
+              class="form-radio"
+            /><span>$100</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="500"
+              class="form-radio"
+            /><span>$500</span></label
+          >
+        </div>
+        <button
+          onclick="pay()"
+          class="mt-4 w-full bg-green-500 text-white px-4 py-2 rounded-lg"
+        >
+          Pay
+        </button>
+        <button
+          onclick="closePayment()"
+          class="mt-2 w-full bg-gray-300 px-4 py-2 rounded-lg"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div
+      id="success-message"
+      class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow hidden"
+    >
+      Payment Successful!
+    </div>
+
+    <script>
+      function openPayment() {
+        document.getElementById("payment").classList.remove("hidden");
+      }
+      function closePayment() {
+        document.getElementById("payment").classList.add("hidden");
+      }
+      function pay() {
+        closePayment();
+        document.getElementById("success-message").classList.remove("hidden");
+        setTimeout(() => {
+          document.getElementById("success-message").classList.add("hidden");
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>

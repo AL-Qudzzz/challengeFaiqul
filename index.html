@@ -3,122 +3,186 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Omise Tamboon Vue</title>
+    <title>Omise Tamboon React</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   </head>
-  <body class="bg-gray-100 flex justify-center items-center min-h-screen">
-    <div id="app" class="grid grid-cols-2 gap-4">
-      <div
-        v-for="(charity, index) in charities"
-        :key="index"
-        class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-[500px] h-[300px] flex flex-col items-start"
-      >
-        <img
-          :src="charity.image"
-          :alt="charity.name"
-          class="rounded-t-lg w-full h-[230px] object-cover"
-        />
-        <div class="p-3 w-full flex justify-between items-center">
-          <p class="text-gray-800 text-sm font-semibold">{{ charity.name }}</p>
-          <button
-            @click="openPayment(charity.name)"
-            class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg"
-          >
-            Donate
-          </button>
-        </div>
-      </div>
-
-      <div
-        v-if="showPayment"
-        class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center"
-      >
-        <div class="bg-white p-6 rounded-lg shadow-lg w-80">
-          <h2 class="text-lg font-semibold">Donate to {{ selectedCharity }}</h2>
-          <div class="mt-4 space-y-2">
-            <label
-              v-for="amount in donationAmounts"
-              :key="amount"
-              class="flex items-center space-x-2"
+  <body class="bg-gray-100 flex justify-center items-center min-h-screen p-4">
+    <div class="max-w-6xl w-full">
+      <h1 class="text-3xl font-bold text-gray-600 text-center mb-8">
+        Omise Tamboon React
+      </h1>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <!-- Card 1 -->
+        <div
+          class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-full flex flex-col items-start"
+        >
+          <img
+            src="./img/habitat-for-humanity-thailand.jpg"
+            alt="Donation"
+            class="rounded-t-lg w-full h-48 sm:h-64 object-cover"
+          />
+          <div class="p-3 w-full flex justify-between items-center">
+            <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+            <button
+              onclick="openPayment()"
+              class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg hover:bg-blue-50"
             >
-              <input
-                type="radio"
-                v-model="selectedAmount"
-                :value="amount"
-                class="form-radio"
-              /><span> ${{ amount }}</span>
-            </label>
+              Donate
+            </button>
           </div>
-          <button
-            @click="pay"
-            class="mt-4 w-full bg-green-500 text-white px-4 py-2 rounded-lg"
-          >
-            Pay
-          </button>
-          <button
-            @click="closePayment"
-            class="mt-2 w-full bg-gray-300 px-4 py-2 rounded-lg"
-          >
-            Cancel
-          </button>
         </div>
-      </div>
 
-      <div
-        v-if="showSuccess"
-        class="fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow"
-      >
-        Payment Successful!
+        <!-- Card 2 -->
+        <div
+          class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-full flex flex-col items-start"
+        >
+          <img
+            src="./img/habitat-for-humanity-thailand.jpg"
+            alt="Donation"
+            class="rounded-t-lg w-full h-48 sm:h-64 object-cover"
+          />
+          <div class="p-3 w-full flex justify-between items-center">
+            <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+            <button
+              onclick="openPayment()"
+              class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg hover:bg-blue-50"
+            >
+              Donate
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-full flex flex-col items-start"
+        >
+          <img
+            src="./img/habitat-for-humanity-thailand.jpg"
+            alt="Donation"
+            class="rounded-t-lg w-full h-48 sm:h-64 object-cover"
+          />
+          <div class="p-3 w-full flex justify-between items-center">
+            <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+            <button
+              onclick="openPayment()"
+              class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg hover:bg-blue-50"
+            >
+              Donate
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div
+          class="bg-white p-2 border border-gray-300 rounded-lg shadow-sm w-full flex flex-col items-start"
+        >
+          <img
+            src="./img/habitat-for-humanity-thailand.jpg"
+            alt="Donation"
+            class="rounded-t-lg w-full h-48 sm:h-64 object-cover"
+          />
+          <div class="p-3 w-full flex justify-between items-center">
+            <p class="text-gray-800 text-sm font-semibold">Baan Kru Noi</p>
+            <button
+              onclick="openPayment()"
+              class="border border-blue-500 text-blue-500 px-3 py-1 text-sm rounded-lg hover:bg-blue-50"
+            >
+              Donate
+            </button>
+          </div>
+        </div>
       </div>
     </div>
 
+    <!-- Payment Modal -->
+    <div
+      id="payment"
+      class="fixed inset-0 bg-gray-800 bg-opacity-50 flex justify-center items-center hidden px-4"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-lg font-semibold mb-4">
+          Select the amount to donate (USD)
+        </h2>
+        <div class="space-y-3">
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="10"
+              class="form-radio"
+              checked
+            /><span>$10</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="20"
+              class="form-radio"
+            /><span>$20</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="50"
+              class="form-radio"
+            /><span>$50</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="100"
+              class="form-radio"
+            /><span>$100</span></label
+          >
+          <label class="flex items-center space-x-2"
+            ><input
+              type="radio"
+              name="amount"
+              value="500"
+              class="form-radio"
+            /><span>$500</span></label
+          >
+        </div>
+        <button
+          onclick="pay()"
+          class="mt-6 w-full bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600"
+        >
+          Pay
+        </button>
+        <button
+          onclick="closePayment()"
+          class="mt-2 w-full bg-gray-300 px-4 py-2 rounded-lg hover:bg-gray-400"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div
+      id="success-message"
+      class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow hidden"
+    >
+      Payment Successful!
+    </div>
+
     <script>
-      Vue.createApp({
-        data() {
-          return {
-            charities: [
-              {
-                name: "Baan Kru Noi",
-                image: "./img/habitat-for-humanity-thailand.jpg",
-              },
-              {
-                name: "Habitat for Humanity",
-                image: "./img/habitat-for-humanity-thailand.jpg",
-              },
-              {
-                name: "Red Cross",
-                image: "./img/habitat-for-humanity-thailand.jpg",
-              },
-              {
-                name: "UNICEF",
-                image: "./img/habitat-for-humanity-thailand.jpg",
-              },
-            ],
-            showPayment: false,
-            showSuccess: false,
-            selectedCharity: "",
-            selectedAmount: 10,
-            donationAmounts: [10, 20, 50, 100, 500],
-          };
-        },
-        methods: {
-          openPayment(charityName) {
-            this.selectedCharity = charityName;
-            this.showPayment = true;
-          },
-          closePayment() {
-            this.showPayment = false;
-          },
-          pay() {
-            this.closePayment();
-            this.showSuccess = true;
-            setTimeout(() => {
-              this.showSuccess = false;
-            }, 3000);
-          },
-        },
-      }).mount("#app");
+      function openPayment() {
+        document.getElementById("payment").classList.remove("hidden");
+      }
+      function closePayment() {
+        document.getElementById("payment").classList.add("hidden");
+      }
+      function pay() {
+        closePayment();
+        document.getElementById("success-message").classList.remove("hidden");
+        setTimeout(() => {
+          document.getElementById("success-message").classList.add("hidden");
+        }, 3000);
+      }
     </script>
   </body>
 </html>
